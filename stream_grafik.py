@@ -6,7 +6,7 @@ import numpy as np
 x = np.linspace(0, 10, 100)
 y = np.sin(x)
 
-showPyplotGlobalUse = false
+
 # Fungsi untuk membuat grafik garis
 def create_line_chart():
     plt.plot(x, y)
@@ -14,6 +14,7 @@ def create_line_chart():
     plt.ylabel("Sumbu Y")
     plt.title("Contoh Grafik Garis")
     st.pyplot()
+    showPyplotGlobalUse = false
 
 
 # Fungsi untuk membuat grafik scatter
