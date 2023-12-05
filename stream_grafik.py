@@ -6,7 +6,7 @@ import numpy as np
 x = np.linspace(0, 10, 100)
 y = np.sin(x)
 
-
+showPyplotGlobalUse = false
 # Fungsi untuk membuat grafik garis
 def create_line_chart():
     plt.plot(x, y)
