@@ -14,7 +14,7 @@ def create_line_chart():
     plt.ylabel("Sumbu Y")
     plt.title("Contoh Grafik Garis")
     st.pyplot()
-    showPyplotGlobalUse = false
+    st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Fungsi untuk membuat grafik scatter
@@ -24,6 +24,7 @@ def create_scatter_chart():
     plt.ylabel("Sumbu Y")
     plt.title("Contoh Grafik Scatter")
     st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Fungsi untuk membuat grafik batang
@@ -36,6 +37,7 @@ def create_bar_chart():
     plt.ylabel("Nilai")
     plt.title("Contoh Grafik Batang")
     st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Aplikasi Streamlit
