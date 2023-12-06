@@ -9,18 +9,9 @@ nltk.download("all")
 nltk.download("averaged_perceptron_tagger")
 
 st.set_page_config(
-    page_title="Analisis Sentimen",
+    page_title="Analisis TF-TDF",
     initial_sidebar_state="expanded",
 )
-
-
-def get_sentiment(value):
-    if value > 0:
-        return "😀 Positif"
-    elif value < 0:
-        return "😏 Negatif"
-    else:
-        return "😐 Netral"
 
 
 def deteksi_bahasa(text):
@@ -40,7 +31,7 @@ def extract_tfidf_features(text):
     return sorted_features
 
 
-st.title("😀 Analisis Sentimen 😒")
+st.title(" Analisis TF_idf ")
 
 st.caption(
     """ Analisis Sentimen adalah teknik pemrosesan bahasa alami yang digunakan untuk mendeteksi sentimen negatif, positif dan netral.
@@ -57,44 +48,12 @@ if bahasa == "en":
 else:
     blob = TextBlob(text)
 
-    st.subheader("Sentimen:")
-    st.write(get_sentiment(blob.sentiment.polarity))
-
-    if blob.sentiment.subjectivity > 0.5:
-        st.write("Opini pribadi: ✅")
-    else:
-        st.write("Opini Pribadi: ❌")
-
-    st.write(blob.sentiment)
-
-    st.subheader(f"Kalimat: {len(blob.sentences)}")
-    st.write(blob.sentences)
-
-    st.subheader(f"Noun Phrase: {len(blob.noun_phrases)}")
-    st.write(blob.noun_phrases)
-
-    st.subheader(f"Kata: {len(blob.words)}")
-    st.write(blob.words)
-
-    st.subheader(f"Lematisasi: {len(blob.words)}")
-    for item in blob.tags:
-        if item[1] == "NN":
-            st.write(item[0], "-->", item[1], "-->", item[0].pluralize())
-        elif item[1] == "NNS":
-            st.write(item[0], "-->", item[1], "-->", item[0].singularize())
-        else:
-            st.write(item[0], "-->", item[1], "-->", item[0].lemmatize())
-
-    st.subheader(f"Tags:")
-    st.write(blob.tags)
-
-    st.subheader("Sentiment Berdasarkan Kalimat:")
-    for sentence in blob.sentences:
-        st.write(get_sentiment(sentence.sentiment.polarity), sentence)
-
-    st.subheader(f"Koreksi ejaan:")
-    st.write(blob.correct())
-
     st.subheader("TF-IDF Features:")
     tfidf_features = extract_tfidf_features(text)
     st.write(tfidf_features)
+
+    word_counts = blob.word_counts
+
+    # Menampilkan jumlah kemunculan setiap kata
+    st.subheader("Jumlah Kemunculan Setiap Kata:")
+    st.write(word_counts)
